@@ -1,0 +1,52 @@
+<div class="dashboard-container">
+  <div class="form-card">
+    <h2>{{ editingId ? 'Edit Experience' : 'Add Experience' }}</h2>
+
+    <form [formGroup]="expForm" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <input type="text" formControlName="company" placeholder="Company Name">
+        <input type="text" formControlName="role" placeholder="Your Role / Title">
+      </div>
+      <div class="input-group">
+        <div class="field-group">
+          <label>Start Date</label>
+          <input type="date" formControlName="startDate">
+        </div>
+        <div class="field-group">
+          <label>End Date (leave empty if current)</label>
+          <input type="date" formControlName="endDate">
+        </div>
+      </div>
+      <textarea formControlName="description" placeholder="Describe your role and achievements..." rows="4"></textarea>
+      <div class="file-input-group">
+        <label>Company Logo / Image</label>
+        <input type="file" accept="image/*" (change)="onFileSelected($event)">
+      </div>
+
+      <div class="success-msg" *ngIf="successMessage">{{ successMessage }}</div>
+
+      <button type="submit" [disabled]="expForm.invalid" class="save-btn">
+        {{ editingId ? 'Update Experience' : 'Save Experience' }}
+      </button>
+      <button type="button" *ngIf="editingId" (click)="resetForm()" class="cancel-btn">Cancel</button>
+    </form>
+  </div>
+
+  <!-- قائمة الـ Experiences -->
+  <div class="exp-list">
+    <div class="exp-item" *ngFor="let exp of experiences">
+      <div class="exp-info">
+        <img *ngIf="exp.image" [src]="imageBaseUrl + exp.image" [alt]="exp.company" class="exp-logo">
+        <div>
+          <strong>{{ exp.company }}</strong>
+          <span class="exp-role">{{ exp.role }}</span>
+          <span class="exp-date">{{ formatDate(exp.startDate) }} → {{ formatDate(exp.endDate) }}</span>
+        </div>
+      </div>
+      <div class="exp-actions">
+        <button (click)="editExperience(exp)" class="edit-btn">Edit</button>
+        <button (click)="deleteExperience(exp._id!)" class="del-btn">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

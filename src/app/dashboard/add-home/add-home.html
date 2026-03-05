@@ -1,0 +1,113 @@
+<div class="dashboard-container">
+
+  <!-- ===== Form Card ===== -->
+  <div class="form-card">
+    <h2>{{ editingId ? 'Update Home Section' : 'Add Home Section' }}</h2>
+
+    <form [formGroup]="homeForm" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <div class="field">
+          <label>Name / Title <span>*</span></label>
+          <input type="text" formControlName="title" placeholder="Your Name">
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" formControlName="email" placeholder="your@email.com">
+        </div>
+      </div>
+
+      <div class="field full roles-section">
+        <label>Roles <span class="hint"></span></label>
+        <div class="roles-input-row">
+          <input
+            type="text"
+            [(ngModel)]="newRole"
+            [ngModelOptions]="{standalone: true}"
+            placeholder="e.g. Full Stack Developer"
+            (keydown.enter)="$event.preventDefault(); addRole()"
+          >
+          <button type="button" class="add-role-btn" (click)="addRole()">
+            <i class="fas fa-plus"></i> Add
+          </button>
+        </div>
+        <!-- Tags -->
+        <div class="roles-tags" *ngIf="roles.length">
+          <span class="role-tag" *ngFor="let r of roles; let i = index">
+            {{ r }}
+            <button type="button" (click)="removeRole(i)">✕</button>
+          </span>
+        </div>
+        <span class="roles-empty" *ngIf="!roles.length">No roles added yet</span>
+      </div>
+
+      <div class="field full">
+        <label>Content / Bio <span>*</span></label>
+        <textarea formControlName="content" placeholder="Write something about yourself..."></textarea>
+      </div>
+
+      <div class="input-group">
+        <div class="field">
+          <label>CV URL</label>
+          <input type="text" formControlName="cvURL" placeholder="https://...">
+        </div>
+        <div class="field">
+          <label>LinkedIn</label>
+          <input type="text" formControlName="linkedIn" placeholder="https://linkedin.com/in/...">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div class="field">
+          <label>GitHub</label>
+          <input type="text" formControlName="gitHub" placeholder="https://github.com/...">
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" formControlName="email" placeholder="your@email.com">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div class="field">
+          <label>Phone</label>
+          <input type="text" formControlName="phone" placeholder="+20 1XX XXX XXXX">
+        </div>
+        <div class="field">
+          <label>Image</label>
+          <input type="file" (change)="onFileSelected($event)">
+        </div>
+      </div>
+
+      <div class="success-msg" *ngIf="successMessage">{{ successMessage }}</div>
+      <div class="error-msg"   *ngIf="errorMessage">{{ errorMessage }}</div>
+
+      <div class="form-actions">
+        <button class="save-btn" type="submit" [disabled]="homeForm.invalid">
+          {{ editingId ? 'Update' : 'Add' }}
+        </button>
+        <button type="button" *ngIf="editingId" (click)="resetForm()" class="cancel-btn">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- ===== List Card ===== -->
+  <div class="table-card">
+    <h2>All Home Data</h2>
+    <div class="home-list">
+      <div class="home-item" *ngFor="let home of homes">
+        <div class="item-info">
+          <strong>{{ home.title }}</strong>
+          <span class="item-email">{{ home.email }}</span>
+          <div class="item-roles-wrap" *ngIf="home.roles?.length">
+            <span class="item-role-tag" *ngFor="let r of home.roles">{{ r }}</span>
+          </div>
+        </div>
+        <div class="item-actions">
+          <button (click)="editHome(home)" class="edit-btn">Edit</button>
+          <button (click)="deleteHome(home._id!)" class="del-btn">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

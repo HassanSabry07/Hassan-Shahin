@@ -1,0 +1,39 @@
+<nav class="navbar" [class.scrolled]="isScrolled">
+
+  <!-- Logo → يودي لـ / -->
+  <div class="nav-logo" (click)="goHome()">
+    <span class="logo-signature">Hassan Shahin</span>
+  </div>
+
+  <!-- Desktop Links -->
+  <ul class="nav-links">
+    <li *ngFor="let item of navItems">
+      <button
+        class="nav-btn"
+        [class.active]="activeSection === item.id"
+        (click)="goTo(item)"
+      >
+        {{ item.label }}
+      </button>
+    </li>
+  </ul>
+
+  <!-- Burger -->
+  <button class="burger" (click)="toggleMenu()" [class.open]="menuOpen">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" [class.open]="menuOpen">
+    <button
+      class="mobile-btn"
+      *ngFor="let item of navItems; let i = index"
+      [class.active]="activeSection === item.id"
+      [style.animation-delay]="i * 0.06 + 's'"
+      (click)="goTo(item)"
+    >
+      {{ item.label }}
+    </button>
+  </div>
+
+</nav>

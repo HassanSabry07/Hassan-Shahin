@@ -1,0 +1,22 @@
+<canvas #starCanvas id="about-stars-canvas"></canvas>
+
+<section class="about-section" *ngIf="aboutData">
+  <div class="container" [class.no-image]="!aboutData.image">
+
+    <div class="about-left" *ngIf="aboutData.image">
+      <div class="image-blob">
+        <img [src]="aboutService.imageBaseUrl + aboutData.image" [alt]="aboutData.heading">
+      </div>
+    </div>
+
+    <div class="about-right">
+      <h2 class="reveal-text section-heading">About <span>Me</span></h2>
+      <h3 class="reveal-text heading">{{ aboutData.heading }}</h3>
+      <p class="reveal-text description">{{ aboutData.description }}</p>
+      <div class="reveal-text footer-action">
+        <button class="contact-btn" (click)="scrollToContact()">Get In Touch</button>
+      </div>
+    </div>
+
+  </div>
+</section>

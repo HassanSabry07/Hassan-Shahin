@@ -1,0 +1,187 @@
+/* ===== Signature Font from Google ===== */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+/* ===== Navbar ===== */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 8%;
+  
+  transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(8, 8, 8, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 245, 255, 0.12);
+  padding: 12px 8%;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== Signature Logo ===== */
+.nav-logo {
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.nav-logo:hover { opacity: 0.75; }
+
+.logo-signature {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+  /* ✅ glow خفيف */
+  text-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
+  transition: text-shadow 0.3s ease;
+}
+
+.nav-logo:hover .logo-signature {
+  text-shadow: 0 0 30px rgba(0, 245, 255, 0.7);
+}
+
+/* ===== Desktop Links ===== */
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0; padding: 0;
+  /* ✅ الـ container اللي فيه الـ pill */
+  position: relative;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 50px;
+  padding: 4px;
+}
+
+/* ===== كل زرار ===== */
+.nav-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.55);
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  position: relative;
+  z-index: 1;
+  /* ✅ transition سلسة على الكولر بس */
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.nav-btn:hover { color: #fff; }
+
+/* ✅ Active - background pill بتتحرك بـ CSS */
+.nav-btn.active {
+  color: #000;
+  font-weight: 700;
+}
+
+/* الـ pill بتتحرك خلف الـ active button */
+.nav-btn.active::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  background: #00f5ff;
+  z-index: -1;
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+  /* ✅ الـ animation السلسة */
+  animation: pillIn 0.3s ease;
+}
+
+@keyframes pillIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ===== Burger ===== */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+}
+
+.burger span {
+  display: block;
+  width: 24px; height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ===== Mobile Menu ===== */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(6, 6, 6, 0.97);
+  backdrop-filter: blur(25px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 999;
+}
+
+.mobile-menu.open { display: flex; }
+
+.mobile-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: rgba(255,255,255,0.6);
+  font-size: 1.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 10px 40px;
+  border-radius: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.4s ease forwards;
+}
+
+@keyframes slideUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mobile-btn:hover {
+  color: #00f5ff;
+  border-color: rgba(0,245,255,0.3);
+  background: rgba(0,245,255,0.06);
+}
+
+.mobile-btn.active {
+  color: #00f5ff;
+  border-color: rgba(0,245,255,0.4);
+  background: rgba(0,245,255,0.08);
+  text-shadow: 0 0 20px rgba(0,245,255,0.5);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .burger    { display: flex; }
+}

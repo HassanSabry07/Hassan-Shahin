@@ -1,0 +1,50 @@
+<canvas #starCanvas id="exp-stars-canvas"></canvas>
+
+<section class="experience-section" #expSection>
+  <div class="section-header">
+    <h2 class="heading"> <span>Experiences</span></h2>
+  </div>
+
+  <div class="timeline-container" #timelineContainer>
+
+    <!-- الخط + الدواير عليه -->
+    <div class="timeline-line">
+      <!-- الخط اللي بيطول -->
+      <div class="timeline-line-fill" #lineFill></div>
+      <!-- دايرة لكل experience على الخط بالظبط -->
+      <div
+        class="line-dot"
+        *ngFor="let exp of experiences; let i = index"
+        [class.dot-active]="revealedItems[i]"
+        [style.top.px]="dotPositions[i]"
+      ></div>
+    </div>
+
+    <!-- الكروت -->
+    <div
+      class="timeline-item"
+      *ngFor="let exp of experiences; let i = index"
+      [class.reveal]="revealedItems[i]"
+      #timelineItem
+    >
+      <div class="timeline-card">
+        <div class="card-header">
+          <div class="company-info">
+            <img *ngIf="exp.image" [src]="getImageUrl(exp.image)" [alt]="exp.company" class="company-logo"/>
+            <div class="company-text">
+              <h3 class="company-name">{{ exp.company }}</h3>
+              <span class="role">{{ exp.role }}</span>
+            </div>
+          </div>
+          <div class="date-badge">
+            <span>{{ formatDate(exp.startDate) }}</span>
+            <span class="date-sep">→</span>
+            <span>{{ formatDate(exp.endDate) }}</span>
+          </div>
+        </div>
+        <p class="description" *ngIf="exp.description">{{ exp.description }}</p>
+      </div>
+    </div>
+
+  </div>
+</section>

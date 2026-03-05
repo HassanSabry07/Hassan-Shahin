@@ -1,0 +1,125 @@
+.dashboard-container { padding: 30px; background: #f0f2f5; min-height: 100vh; display: flex; gap: 25px; flex-wrap: wrap; }
+
+/* ===== Cards ===== */
+.form-card, .table-card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.form-card { flex: 1.2; min-width: 400px; }
+.table-card { flex: 0.8; min-width: 300px; }
+
+h2 { margin-bottom: 20px; color: #333; font-size: 1.3rem; }
+
+/* ===== Form ===== */
+.input-group { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field.full { margin-bottom: 15px; }
+
+.field label { font-size: 0.85rem; font-weight: 600; color: #555; }
+.field label span { color: #ff4d4d; }
+.field label .hint { color: #aaa; font-weight: 400; font-size: 0.78rem; }
+
+input, textarea {
+  padding: 11px 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  outline: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+input:focus, textarea:focus { border-color: #007bff; box-shadow: 0 0 0 3px rgba(0,123,255,0.08); }
+
+textarea { resize: vertical; height: 100px; }
+
+/* ===== Messages ===== */
+.success-msg { color: #28a745; font-weight: bold; margin-bottom: 10px; }
+.error-msg   { color: #dc3545; font-weight: bold; margin-bottom: 10px; }
+
+/* ===== Actions ===== */
+.form-actions { display: flex; gap: 10px; }
+
+.save-btn { background: #007bff; color: white; border: none; padding: 12px 30px; border-radius: 8px; cursor: pointer; font-weight: 700; transition: 0.3s; }
+.save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.save-btn:hover:not(:disabled) { background: #0056b3; }
+
+.cancel-btn { background: #6c757d; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; }
+
+/* ===== List ===== */
+.home-list { display: flex; flex-direction: column; gap: 12px; }
+
+.home-item {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #eee;
+}
+
+.item-info { display: flex; flex-direction: column; gap: 3px; flex: 1; }
+.item-info strong { color: #333; font-size: 1rem; }
+.item-email { color: #888; font-size: 0.82rem; }
+.item-roles { color: #007bff; font-size: 0.78rem; }
+
+.item-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.edit-btn { background: #ffc107; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-weight: 500; }
+.del-btn  { background: #ff4d4d; color: white; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-weight: 500; }
+
+/* ===== Roles ===== */
+.roles-section { margin-bottom: 15px; }
+
+.roles-input-row { display: flex; gap: 10px; }
+.roles-input-row input { flex: 1; margin-bottom: 0; }
+
+.add-role-btn {
+  background: #007bff; color: white; border: none;
+  padding: 10px 16px; border-radius: 8px; cursor: pointer;
+  font-size: 0.85rem; font-weight: 600; white-space: nowrap;
+  display: flex; align-items: center; gap: 5px;
+  transition: 0.2s;
+}
+.add-role-btn:hover { background: #0056b3; }
+
+.roles-tags {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;
+}
+
+.role-tag {
+  background: #e8f0fe; color: #1a73e8;
+  border: 1px solid #c5d8f8;
+  padding: 5px 10px; border-radius: 20px;
+  font-size: 0.82rem; font-weight: 600;
+  display: flex; align-items: center; gap: 6px;
+}
+
+.role-tag button {
+  background: none; border: none; cursor: pointer;
+  color: #888; font-size: 0.75rem; padding: 0;
+  transition: 0.2s;
+}
+.role-tag button:hover { color: #ff4d4d; }
+
+.roles-empty { color: #bbb; font-size: 0.82rem; margin-top: 6px; display: block; }
+
+/* item roles in list */
+.item-roles-wrap { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+.item-role-tag {
+  background: #e8f0fe; color: #1a73e8;
+  padding: 2px 8px; border-radius: 10px; font-size: 0.72rem;
+}
+
+@media (max-width: 768px) {
+  .dashboard-container { flex-direction: column; padding: 15px; }
+  .input-group { grid-template-columns: 1fr; }
+  .form-card, .table-card { min-width: unset; }
+}

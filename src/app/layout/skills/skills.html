@@ -1,0 +1,37 @@
+<canvas #starCanvas id="stars-canvas"></canvas>
+
+<section class="skills-section">
+  <div class="section-header">
+    <h2 class="heading">Technical <span>Skills</span></h2>
+  </div>
+
+  <div class="marquee-wrapper">
+    <!-- Row 1 - يتحرك لليسار -->
+    <div class="marquee-row row-1" id="row1">
+      <div class="marquee-content">
+        <div class="skill-card" *ngFor="let s of [...skills, ...skills, ...skills]">
+          <div class="card-body">
+            <!-- ✅ الحل: [class] بدل class static -->
+            <i [class]="getIconClass(s.icon)"></i>
+            <h4 class="skill-name">{{s.name}}</h4>
+            <span class="skill-level">{{s.level}}%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2 - يتحرك لليمين -->
+    <div class="marquee-row row-2" id="row2">
+      <div class="marquee-content reverse">
+        <div class="skill-card" *ngFor="let s of [...skills, ...skills, ...skills]">
+          <div class="card-body">
+            <!-- ✅ الحل: [class] بدل class static -->
+            <i [class]="getIconClass(s.icon)"></i>
+            <h4 class="skill-name">{{s.name}}</h4>
+            <span class="skill-level">{{s.level}}%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,72 @@
+<div class="dashboard-container">
+  <div class="form-card">
+    <h2>{{ editingId ? 'Edit Contact' : 'Add Contact' }}</h2>
+
+    <div class="quick-examples">
+      <span class="examples-label">Quick Select:</span>
+      <button
+        type="button"
+        class="example-btn"
+        *ngFor="let ex of examples"
+        (click)="selectExample(ex)"
+      >
+        <i [class]="getIconClass(ex.icon)"></i> {{ ex.type }}
+      </button>
+    </div>
+
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <div class="field">
+          <label>Type <span>*</span></label>
+          <input type="text" formControlName="type" placeholder="Email / Phone / LinkedIn...">
+        </div>
+        <div class="field">
+          <label>Icon <span>*</span></label>
+          <div class="icon-input-wrap">
+            <input type="text" formControlName="icon" placeholder="envelope / phone / linkedin...">
+            <i [class]="getIconClass(contactForm.get('icon')?.value)" class="icon-preview"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div class="field">
+          <label>Value <span>*</span></label>
+          <input type="text" formControlName="value" placeholder="your@email.com / +20...">
+        </div>
+        <div class="field">
+          <label>Link <span class="optional">(optional)</span></label>
+          <input type="text" formControlName="link" placeholder="https://...">
+        </div>
+      </div>
+
+      <div class="success-msg" *ngIf="successMessage">{{ successMessage }}</div>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="contactForm.invalid" class="save-btn">
+          {{ editingId ? 'Update' : 'Add Contact' }}
+        </button>
+        <button type="button" *ngIf="editingId" (click)="resetForm()" class="cancel-btn">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="contacts-list">
+    <div class="contact-item" *ngFor="let c of contacts">
+      <div class="item-info">
+        <div class="item-icon">
+          <i [class]="getIconClass(c.icon)"></i>
+        </div>
+        <div>
+          <strong>{{ c.type }}</strong>
+          <span class="item-value">{{ c.value }}</span>
+          <a *ngIf="c.link" [href]="c.link" target="_blank" class="item-link">{{ c.link }}</a>
+        </div>
+      </div>
+      <div class="item-actions">
+        <button (click)="editContact(c)" class="edit-btn">Edit</button>
+        <button (click)="deleteContact(c._id!)" class="del-btn">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,114 @@
+<canvas #starCanvas id="proj-stars-canvas"></canvas>
+
+<section class="projects-section">
+  <div class="section-header">
+    <h2 class="heading">My <span>Projects</span></h2>
+    <p class="sub-heading">Things I've built with passion 🚀</p>
+  </div>
+
+  <div class="projects-grid">
+    <div
+      class="project-card"
+      *ngFor="let p of visibleProjects; let i = index"
+      [class.reveal]="revealedItems[i]"
+      [class.from-left]="i % 2 === 0"
+      [class.from-right]="i % 2 !== 0"
+      [style.transition-delay]="getDelay(i)"
+      #projectCard
+      (mousemove)="onMouseMove($event, projectCard)"
+      (mouseleave)="onMouseLeave(projectCard)"
+      (click)="openModal(p)"
+    >
+      <div class="card-image-wrapper">
+        <img *ngIf="p.image" [src]="getImageUrl(p.image)" [alt]="p.title" class="card-image"/>
+        <div class="card-image-placeholder" *ngIf="!p.image">
+          <i class="fas fa-code"></i>
+        </div>
+        <div class="card-overlay">
+          <span class="overlay-hint">
+            <i class="fas fa-expand-alt"></i> View Details
+          </span>
+        </div>
+      </div>
+
+      <div class="card-content">
+        <h3 class="card-title">{{ p.title }}</h3>
+        <p class="card-desc">{{ p.description }}</p>
+        
+        <div class="card-tools" *ngIf="p.tools">
+          <span class="tool-tag" *ngFor="let tool of getToolsArray(p.tools)">{{ tool }}</span>
+        </div>
+
+        <div class="card-external-link" *ngIf="p.link">
+          <a 
+            [href]="p.link" 
+            target="_blank" 
+            class="mini-link-btn"
+            (click)="$event.stopPropagation()"
+          >
+            <i class="fas fa-external-link-alt"></i> Live Demo
+          </a>
+        </div>
+      </div>
+
+      <div class="card-glow"></div>
+    </div>
+  </div>
+
+  <div class="view-more-wrapper" *ngIf="hasMore">
+    <button class="view-more-btn" (click)="toggleShowAll()">
+      <span *ngIf="!showAll">View More <i class="fas fa-chevron-down"></i></span>
+      <span *ngIf="showAll">View Less <i class="fas fa-chevron-up"></i></span>
+    </button>
+  </div>
+</section>
+
+<div
+  class="modal-backdrop"
+  [class.open]="modalOpen"
+  (click)="onBackdropClick($event)"
+  *ngIf="selectedProject"
+>
+  <div class="modal-box" [class.open]="modalOpen">
+    <button class="modal-close" (click)="closeModal()">
+      <i class="fas fa-times"></i>
+    </button>
+
+    <div class="modal-image-wrap">
+      <img
+        *ngIf="selectedProject.image"
+        [src]="getImageUrl(selectedProject.image)"
+        [alt]="selectedProject.title"
+        class="modal-image"
+      />
+      <div class="modal-image-placeholder" *ngIf="!selectedProject.image">
+        <i class="fas fa-code"></i>
+      </div>
+      <div class="modal-img-overlay"></div>
+    </div>
+
+    <div class="modal-content">
+      <h2 class="modal-title">{{ selectedProject.title }}</h2>
+      <p class="modal-desc">{{ selectedProject.description }}</p>
+
+      <div class="modal-tools" *ngIf="selectedProject.tools">
+        <h4>Tech Stack</h4>
+        <div class="tools-wrap">
+          <span class="tool-tag" *ngFor="let tool of getToolsArray(selectedProject.tools)">
+            {{ tool }}
+          </span>
+        </div>
+      </div>
+
+      <a
+        *ngIf="selectedProject.link"
+        [href]="selectedProject.link"
+        target="_blank"
+        class="modal-link-btn"
+        (click)="$event.stopPropagation()"
+      >
+        <i class="fas fa-external-link-alt"></i> Live Demo
+      </a>
+    </div>
+  </div>
+</div>

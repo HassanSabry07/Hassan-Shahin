@@ -1,0 +1,122 @@
+#stars-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: #000;
+}
+
+.skills-section {
+  padding: 100px 0;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.heading {
+  color: white;
+  text-align: center;
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.heading span {
+  color: #00f5ff;
+}
+
+.marquee-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* أنيميشن الظهور عند السكرول */
+.marquee-row {
+  width: 100%;
+  overflow: hidden;
+  padding: 60px 0;
+  transition: all 1s ease-in-out;
+  opacity: 0;
+}
+
+.row-1 { transform: translateX(-150px); }
+.row-2 { transform: translateX(150px); }
+
+.reveal {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+.marquee-content {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  animation: scroll-left 40s linear infinite;
+}
+
+.reverse {
+  animation-direction: reverse !important;
+}
+
+.skill-card {
+  width: 170px;
+  height: 210px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  flex-shrink: 0;
+  transition: 0.4s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-25px);
+  border-color: #00f5ff;
+  background: rgba(0, 245, 255, 0.08);
+  box-shadow: 0 15px 35px rgba(0, 245, 255, 0.2);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* ✅ الأيقونة - CSS كامل بدون أي تعديل على شكلها */
+.skill-icon {
+  font-size: 4rem !important;
+  color: #00f5ff !important;
+  margin-bottom: 15px;
+  display: block !important;
+  visibility: visible !important;
+  text-shadow: 0 0 15px rgba(0, 245, 255, 0.5);
+}
+
+.skill-name {
+  color: #fff !important;
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin: 0 !important;
+  text-align: center;
+}
+
+.skill-level {
+  color: #00f5ff !important;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  background: rgba(0, 245, 255, 0.15);
+  padding: 3px 15px;
+  border-radius: 20px;
+}
+
+@keyframes scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-33.33%); }
+}
+
+.marquee-row:hover .marquee-content {
+  animation-play-state: paused;
+}

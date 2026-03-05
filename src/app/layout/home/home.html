@@ -1,0 +1,46 @@
+<canvas #starCanvas id="stars-canvas"></canvas>
+
+<section class="home" #homeSection *ngIf="homeData">
+
+  <!-- اليسار - بييجي من الشمال -->
+  <div class="home-left" [class.reveal-left]="leftRevealed">
+    <h1 class="name">
+      Hi, I'm <span>{{ homeData.title }}</span>
+      <span class="wave">👋</span>
+    </h1>
+
+    <h2 class="role"></h2>
+
+    <p class="description">{{ homeData.content }}</p>
+
+    <div class="hero-buttons">
+      <a *ngIf="homeData.cvURL" [href]="homeData.cvURL" target="_blank" class="cv-link">
+        <button class="cv-btn">Download CV</button>
+      </a>
+      <button class="projects-btn" (click)="scrollToProjects()">Projects</button>
+    </div>
+
+    <div class="social-icons">
+      <a *ngIf="homeData.linkedIn" [href]="homeData.linkedIn" target="_blank">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a *ngIf="homeData.gitHub" [href]="homeData.gitHub" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+      <a *ngIf="homeData.email" [href]="'mailto:' + homeData.email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a *ngIf="homeData.phone" [href]="'tel:' + homeData.phone">
+        <i class="fas fa-phone-alt"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- اليمين - بييجي من اليمين -->
+  <div class="home-right" [class.reveal-right]="rightRevealed">
+    <div class="image-blob">
+      <img [src]="homeService.imageBaseUrl + homeData.image" [alt]="homeData.title">
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,27 @@
+import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-add-header',
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive, CommonModule],
+  templateUrl: './add-header.html',
+  styleUrls: ['./add-header.css']
+})
+export class AddHeader {
+  menuOpen = false;
+
+  navItems = [
+    { route: 'addhome',       label: 'Home',       icon: 'fas fa-home'      },
+    { route: 'addabout',      label: 'About',      icon: 'fas fa-user'      },
+    { route: 'addskills',     label: 'Skills',     icon: 'fas fa-code'      },
+    { route: 'addexperience', label: 'Experience', icon: 'fas fa-briefcase' },
+    { route: 'addprojects',   label: 'Projects',   icon: 'fas fa-folder'    },
+    { route: 'addcontact',    label: 'Contact',    icon: 'fas fa-envelope'  },
+  ];
+
+  toggleMenu() { this.menuOpen = !this.menuOpen; }
+}
+
+

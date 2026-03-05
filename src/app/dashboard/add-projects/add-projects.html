@@ -1,0 +1,43 @@
+<div class="dashboard-container">
+  <div class="form-card">
+    <h2>{{ editingId ? '✏️ Edit Project' : '➕ Add Project' }}</h2>
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <input type="text" formControlName="title" placeholder="Project Title">
+        <input type="text" formControlName="link" placeholder="Live Link (https://...)">
+      </div>
+      <textarea formControlName="description" placeholder="Project Description..." rows="3"></textarea>
+      <input type="text" formControlName="tools" placeholder="Tools (e.g. Angular, Node.js, MongoDB)">
+      <div class="file-group">
+        <label>Project Image</label>
+        <input type="file" accept="image/*" (change)="onFileSelected($event)">
+      </div>
+      <div class="success-msg" *ngIf="successMessage">{{ successMessage }}</div>
+      <div class="form-actions">
+        <button type="submit" [disabled]="projectForm.invalid" class="save-btn">
+          {{ editingId ? 'Update' : 'Save Project' }}
+        </button>
+        <button type="button" *ngIf="editingId" (click)="resetForm()" class="cancel-btn">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- قائمة البروجيكتس -->
+  <div class="projects-list">
+    <div class="project-item" *ngFor="let p of projects">
+      <div class="item-info">
+        <img *ngIf="p.image" [src]="imageBaseUrl + p.image" [alt]="p.title" class="item-img">
+        <div class="item-placeholder" *ngIf="!p.image"><i class="fas fa-code"></i></div>
+        <div>
+          <strong>{{ p.title }}</strong>
+          <span class="item-desc">{{ p.description }}</span>
+          <a *ngIf="p.link" [href]="p.link" target="_blank" class="item-link">{{ p.link }}</a>
+        </div>
+      </div>
+      <div class="item-actions">
+        <button (click)="editProject(p)" class="edit-btn">Edit</button>
+        <button (click)="deleteProject(p._id!)" class="del-btn">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

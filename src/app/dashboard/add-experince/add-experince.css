@@ -1,0 +1,164 @@
+.dashboard-container {
+  padding: 30px;
+  background: #f0f2f5;
+  min-height: 100vh;
+}
+
+.form-card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.form-card h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.input-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field-group label {
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 500;
+}
+
+input, textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input:focus, textarea:focus {
+  border-color: #007bff;
+}
+
+textarea {
+  resize: vertical;
+  margin-bottom: 15px;
+}
+
+.file-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.file-input-group label {
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.success-msg {
+  color: #28a745;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.save-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+.save-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cancel-btn {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ===== List ===== */
+.exp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.exp-item {
+  background: white;
+  padding: 15px 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.exp-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.exp-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid #eee;
+}
+
+.exp-info strong {
+  display: block;
+  color: #333;
+  font-size: 1rem;
+}
+
+.exp-role {
+  display: block;
+  color: #007bff;
+  font-size: 0.85rem;
+}
+
+.exp-date {
+  display: block;
+  color: #888;
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+.exp-actions button {
+  margin-left: 8px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.edit-btn { background: #ffc107; }
+.del-btn  { background: #ff4d4d; color: white; }

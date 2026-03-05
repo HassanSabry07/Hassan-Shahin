@@ -1,0 +1,51 @@
+<!-- <ul class="nav-links">
+    <li><a routerLink="addnavbar" routerLinkActive="active">Navbar</a></li>
+    <li><a routerLink="addhome" routerLinkActive="active">Home</a></li>
+    <li><a routerLink="addabout" routerLinkActive="active">About</a></li>
+    <li><a routerLink="addskills" routerLinkActive="active">Skills</a></li>
+    <li><a routerLink="addexperience" routerLinkActive="active">Experience</a></li>
+    <li><a routerLink="addprojects" routerLinkActive="active">Projects</a></li>
+</ul> -->
+
+
+
+<header class="dash-header">
+  <!-- Logo -->
+  <div class="dash-logo">
+    <i class="fas fa-layer-group"></i>
+    <span>Dashboard</span>
+  </div>
+
+  <!-- Desktop Nav -->
+  <nav class="dash-nav">
+    <a
+      class="dash-link"
+      *ngFor="let item of navItems"
+      [routerLink]="item.route"
+      routerLinkActive="active"
+    >
+      <i [class]="item.icon"></i>
+      <span>{{ item.label }}</span>
+    </a>
+  </nav>
+
+  <!-- Burger -->
+  <button class="dash-burger" (click)="toggleMenu()" [class.open]="menuOpen">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- Mobile -->
+  <div class="dash-mobile" [class.open]="menuOpen">
+    <a
+      class="dash-mobile-link"
+      *ngFor="let item of navItems"
+      [routerLink]="item.route"
+      routerLinkActive="active"
+      (click)="menuOpen = false"
+    >
+      <i [class]="item.icon"></i>
+      {{ item.label }}
+    </a>
+  </div>
+
+</header>

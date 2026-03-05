@@ -1,0 +1,42 @@
+
+
+ <canvas #starCanvas id="contact-stars-canvas"></canvas>
+
+<section class="contact-section" id="contact">
+
+  <h2 class="heading">Get In <span>Touch</span></h2>
+    <p class="sub-heading">Let's work together or just say hi! 👋</p>
+
+  <div class="contact-grid">
+    <a
+      class="contact-card"
+      *ngFor="let c of contacts; let i = index"
+      [class.reveal]="revealedItems[i]"
+      [style.transition-delay]="getDelay(i)"
+      [style.--c]="getColor(i)"
+      [href]="getHref(c)"
+      target="_blank"
+      #contactCard
+    >
+      <!-- أيقونة دايرة بالون المميز -->
+      <div class="icon-circle">
+        <i [class]="getIconClass(c.icon)"></i>
+      </div>
+
+      <!-- بيانات -->
+      <div class="card-text">
+        <span class="card-type">{{ c.type }}</span>
+        <span class="card-value">{{ c.value }}</span>
+      </div>
+
+      <!-- سهم -->
+      <div class="card-arrow">
+        <i class="fas fa-arrow-right"></i>
+      </div>
+
+      <!-- خط سفلي ملون -->
+      <div class="card-line"></div>
+    </a>
+  </div>
+
+</section>

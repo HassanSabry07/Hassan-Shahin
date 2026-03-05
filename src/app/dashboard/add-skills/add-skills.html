@@ -1,0 +1,40 @@
+<div class="dashboard-container">
+  <div class="form-card">
+    <h2>Add New Skill</h2>
+    <form [formGroup]="skillForm" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <input type="text" formControlName="name" placeholder="Skill Name (e.g., Angular)">
+        <input type="text" formControlName="level" placeholder="Level (e.g., 90)">
+        <!-- ✅ Hint للمستخدم إنه يكتب اسم الأيقونة صح -->
+        <input type="text" formControlName="icon" placeholder="Icon name (e.g., angular, node-js, database)">
+      </div>
+
+      <!-- ✅ Preview للأيقونة قبل الحفظ -->
+      <div class="icon-preview" *ngIf="skillForm.get('icon')?.value">
+        <span>Preview: </span>
+        <i [class]="getIconClass(skillForm.get('icon')?.value)"></i>
+        <small>إذا مش شايف الأيقونة، تأكد من اسمها على <a href="https://fontawesome.com/icons" target="_blank">fontawesome.com</a></small>
+      </div>
+
+      <div class="success-msg" *ngIf="successMessage">{{ successMessage }}</div>
+
+      <button type="submit" [disabled]="skillForm.invalid" class="save-btn">
+        {{ editingId ? 'Update Skill' : 'Save Skill' }}
+      </button>
+    </form>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-item" *ngFor="let s of skills">
+      <div class="item-info">
+        <!-- ✅ نفس الـ fix هنا -->
+        <i [class]="getIconClass(s.icon)"></i>
+        <span>{{s.name}}</span>
+      </div>
+      <div class="item-actions">
+        <button (click)="editSkill(s)" class="edit-btn">Edit</button>
+        <button (click)="deleteSkill(s._id)" class="del-btn">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
