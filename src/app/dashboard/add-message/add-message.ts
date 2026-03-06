@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MessageServices } from '../../core/services/message.services';
 import { IMessage } from '../../core/models/message.model';
@@ -14,16 +14,27 @@ export class AddMessage implements OnInit {
   messages: IMessage[] = [];
   loading = true;
 
-  constructor(private messageService: MessageServices) {}
+  constructor(
+    private messageService: MessageServices,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.loadMessages();
   }
 
   loadMessages() {
-    this.messageService.getMessages().subscribe(res => {
-      this.messages = res;
-      this.loading = false;
+    this.messageService.getMessages().subscribe({
+      next: (res) => {
+        this.messages = res;
+        this.loading = false;
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        console.log(err);
+        this.loading = false;
+        this.cdr.detectChanges();
+      }
     });
   }
 
