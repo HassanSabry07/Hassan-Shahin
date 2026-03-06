@@ -124,3 +124,7 @@
   .dash-nav    { display: none; }
   .dash-burger { display: flex; }
 }
+
+.logout-btn{
+  cursor: pointer;
+}

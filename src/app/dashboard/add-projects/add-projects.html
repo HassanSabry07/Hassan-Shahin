@@ -22,13 +22,12 @@
     </form>
   </div>
 
-  <!-- قائمة البروجيكتس -->
   <div class="projects-list">
     <div class="project-item" *ngFor="let p of projects">
       <div class="item-info">
         <img *ngIf="p.image" [src]="imageBaseUrl + p.image" [alt]="p.title" class="item-img">
         <div class="item-placeholder" *ngIf="!p.image"><i class="fas fa-code"></i></div>
-        <div>
+        <div class="item-text"> <!-- ← التعديل هنا -->
           <strong>{{ p.title }}</strong>
           <span class="item-desc">{{ p.description }}</span>
           <a *ngIf="p.link" [href]="p.link" target="_blank" class="item-link">{{ p.link }}</a>

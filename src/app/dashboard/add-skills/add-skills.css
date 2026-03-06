@@ -25,11 +25,11 @@ input {
   border-radius: 8px;
   outline: none;
   transition: 0.3s;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-input:focus {
-  border-color: #007bff;
-}
+input:focus { border-color: #007bff; }
 
 .save-btn {
   background: #007bff;
@@ -42,12 +42,8 @@ input:focus {
   transition: 0.3s;
 }
 
-.save-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
+.save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-/* ✅ Preview الأيقونة */
 .icon-preview {
   display: flex;
   align-items: center;
@@ -57,28 +53,14 @@ input:focus {
   background: #f8f9ff;
   border-radius: 8px;
   border: 1px dashed #007bff;
+  flex-wrap: wrap;
 }
 
-.icon-preview i {
-  font-size: 1.8rem;
-  color: #007bff;
-}
+.icon-preview i { font-size: 1.8rem; color: #007bff; }
+.icon-preview small { color: #888; font-size: 0.8rem; }
+.icon-preview a { color: #007bff; }
 
-.icon-preview small {
-  color: #888;
-  font-size: 0.8rem;
-}
-
-.icon-preview a {
-  color: #007bff;
-}
-
-/* ✅ Success message */
-.success-msg {
-  color: #28a745;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
+.success-msg { color: #28a745; font-weight: bold; margin-bottom: 10px; }
 
 .skills-grid {
   display: grid;
@@ -96,16 +78,8 @@ input:focus {
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.item-info {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.item-info i {
-  font-size: 1.8rem;
-  color: #007bff;
-}
+.item-info { display: flex; align-items: center; gap: 15px; }
+.item-info i { font-size: 1.8rem; color: #007bff; }
 
 .item-actions button {
   margin-left: 5px;
@@ -117,3 +91,17 @@ input:focus {
 
 .edit-btn { background: #ffc107; }
 .del-btn  { background: #ff4d4d; color: white; }
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .dashboard-container { padding: 15px; }
+  .form-card { padding: 15px; }
+  .input-group { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .save-btn { width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .skill-item { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .item-actions { align-self: flex-end; }
+}

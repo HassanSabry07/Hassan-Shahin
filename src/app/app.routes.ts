@@ -15,6 +15,10 @@ import { AddProjects } from './dashboard/add-projects/add-projects';
 import { AddExperince } from './dashboard/add-experince/add-experince';
 import { AddContact } from './dashboard/add-contact/add-contact';
 import { Navbar } from './layout/navbar/navbar';
+import { Login } from './dashboard/login/login';
+import { authGuard } from './core/services/auth-guard';
+import { MessageComponent } from './layout/message/message';
+import { AddMessage } from './dashboard/add-message/add-message';
 
 
 
@@ -44,8 +48,8 @@ export const routes: Routes = [
 
   
     ,
-
-    {path:"dashboard", component:Dashboard,children:[
+    {path:"login" , component:Login},
+    {path:"dashboard", component:Dashboard,canActivate: [authGuard],children:[
         {path:"addnavbar", component:AddHome},
         {path:"addhome", component:AddHome},
         {path:"addabout", component:AddAbout},
@@ -53,6 +57,7 @@ export const routes: Routes = [
         {path:"addexperience", component:AddExperince},
         {path:"addprojects", component:AddProjects},
         {path:"addcontact", component:AddContact},
+       { path: 'messages', component: AddMessage }
     ]},
     
     {path:"**", component:NotFound}

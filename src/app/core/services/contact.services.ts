@@ -5,7 +5,7 @@ import { IContact } from '../models/contact.model';
 
 @Injectable({ providedIn: 'root' })
 export class ContactService {
-  private apiURL = 'https://portfolio-nodejs-production.up.railway.app/contact';
+  private apiURL = 'http://localhost:3000/contact';
 
   constructor(private _http: HttpClient) {}
 

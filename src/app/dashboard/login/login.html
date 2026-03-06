@@ -1,0 +1,58 @@
+<!-- الـ navbar بره الـ login-page -->
+<nav class="login-navbar">
+  <div class="login-nav-logo">
+    <span class="logo-signature">Hassan Shahin</span>
+  </div>
+</nav>
+
+<div class="login-page">
+  <div class="login-card">
+
+    <div class="login-logo">
+      <i class="fas fa-layer-group"></i>
+      <span>Admin Panel</span>
+    </div>
+
+    <h2 class="login-title">Welcome Back</h2>
+    <p class="login-sub">Sign in to manage your portfolio</p>
+
+    <div class="error-msg" *ngIf="errorMsg">
+      <i class="fas fa-exclamation-circle"></i> {{ errorMsg }}
+    </div>
+
+    <div class="field">
+      <label>Username</label>
+      <div class="input-wrap">
+        <i class="fas fa-user"></i>
+        <input
+          type="text"
+          [(ngModel)]="credentials.username"
+          placeholder="Enter username"
+          (keydown)="onKeyDown($event)"
+        >
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Password</label>
+      <div class="input-wrap">
+        <i class="fas fa-lock"></i>
+        <input
+          [type]="showPass ? 'text' : 'password'"
+          [(ngModel)]="credentials.password"
+          placeholder="Enter password"
+          (keydown)="onKeyDown($event)"
+        >
+        <button class="eye-btn" type="button" (click)="showPass = !showPass">
+          <i [class]="showPass ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+        </button>
+      </div>
+    </div>
+
+    <button class="login-btn" (click)="login()" [disabled]="isLoading">
+      <span *ngIf="!isLoading"><i class="fas fa-sign-in-alt"></i> Sign In</span>
+      <span *ngIf="isLoading"><i class="fas fa-spinner fa-spin"></i> Signing in...</span>
+    </button>
+
+  </div>
+</div>

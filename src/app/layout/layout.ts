@@ -9,10 +9,11 @@ import { Skills } from './skills/skills';
 import { Projects } from './projects/projects';
 import { Contact } from './contact/contact';
 import { Experince } from './experince/experince';
+import { MessageComponent } from './message/message';
 
 @Component({
   selector: 'app-layout',
-  imports: [RouterOutlet,Header,Footer,NgxGalaxyComponent,Home,About,Skills,Projects,Contact,Experince],
+  imports: [RouterOutlet,Header,Footer,NgxGalaxyComponent,Home,About,Skills,Projects,Contact,Experince,MessageComponent],
   templateUrl: './layout.html',
   styleUrl: './layout.css',
   standalone: true,
@@ -24,6 +25,8 @@ import { Experince } from './experince/experince';
     <app-experince></app-experince>
     <app-projects></app-projects>
     <app-contact></app-contact>
+    <app-message></app-message>
+
   `
 })
 export class Layout {
