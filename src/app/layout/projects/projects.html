@@ -20,33 +20,31 @@
       (click)="openModal(p)"
     >
       <div class="card-image-wrapper">
-        <img *ngIf="p.image" [src]="getImageUrl(p.image)" [alt]="p.title" class="card-image"/>
+        <img *ngIf="p.image" [src]="getImageUrl(p.image)" [alt]="p.title" class="card-image" />
         <div class="card-image-placeholder" *ngIf="!p.image">
           <i class="fas fa-code"></i>
         </div>
         <div class="card-overlay">
-          <span class="overlay-hint">
-            <i class="fab fa-github"></i> GitHub Repo
-          </span>
+          <span class="overlay-hint"> <i class="fab fa-github"></i> GitHub Repo </span>
         </div>
       </div>
 
       <div class="card-content">
         <h3 class="card-title">{{ p.title }}</h3>
         <p class="card-desc">{{ p.description }}</p>
-        
+
         <div class="card-tools" *ngIf="p.tools">
           <span class="tool-tag" *ngFor="let tool of getToolsArray(p.tools)">{{ tool }}</span>
         </div>
 
         <div class="card-external-link" *ngIf="p.link">
-          <a 
-            [href]="p.link" 
-            target="_blank" 
+          <a
+            [href]="p.link"
+            target="_blank"
             class="mini-link-btn"
             (click)="$event.stopPropagation()"
           >
-            <i class="fas fa-external-link-alt"></i> Live Demo
+            <i class="fab fa-github"></i> GitHub Repo
           </a>
         </div>
       </div>
