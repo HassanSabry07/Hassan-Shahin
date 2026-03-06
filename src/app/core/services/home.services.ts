@@ -8,9 +8,8 @@ import { Injectable } from "@angular/core";
 })
 export class HomeServices {
 
-  private apiURL = 'http://localhost:3000/home';
-  readonly imageBaseUrl = 'http://localhost:3000/uploads/';
-
+private apiURL = 'https://portfolio-nodejs-production.up.railway.app/home';
+readonly imageBaseUrl = 'https://portfolio-nodejs-production.up.railway.app/uploads/';
   constructor(private _http: HttpClient) {}
 
   getHomes(): Observable<IHome[]> {

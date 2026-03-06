@@ -7,8 +7,8 @@ import { IProjects } from '../models/projects.model';
   providedIn: 'root',
 })
 export class ProjectsServices {
-  private apiURL = 'http://localhost:3000/projects';
-  readonly imageBaseUrl = 'http://localhost:3000/uploads/';
+  private apiURL = 'https://portfolio-nodejs-production.up.railway.app/projects';
+readonly imageBaseUrl = 'https://portfolio-nodejs-production.up.railway.app/uploads/';
 
   constructor(private _http: HttpClient) {}
 

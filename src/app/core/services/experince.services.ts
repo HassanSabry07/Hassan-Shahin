@@ -7,9 +7,8 @@ import { IExperince } from '../models/Experince.model ';
   providedIn: 'root',
 })
 export class ExperinceServices {
-  private apiURL = 'http://localhost:3000/experience';
-  readonly imageBaseUrl = 'http://localhost:3000/uploads/';
-
+private apiURL = 'https://portfolio-nodejs-production.up.railway.app/experience';
+readonly imageBaseUrl = 'https://portfolio-nodejs-production.up.railway.app/uploads/';
   constructor(private _http: HttpClient) {}
 
   getExperiences(): Observable<IExperince[]> {

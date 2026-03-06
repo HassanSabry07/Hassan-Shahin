@@ -7,7 +7,7 @@ import { ISkills } from '../models/skills.model';
   providedIn: 'root',
 })
 export class SkillsServices {
-  private apiURL = 'http://localhost:3000/skills';
+private apiURL = 'https://portfolio-nodejs-production.up.railway.app/skills';
 
   constructor(private _http: HttpClient) {}
 
