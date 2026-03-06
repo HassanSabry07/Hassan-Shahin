@@ -15,8 +15,7 @@ export class Login {
   router = inject(Router);
   http   = inject(HttpClient);
 
-  url = 'http://localhost:3000/api/auth/login';
-
+url = 'https://portfolio-nodejs-production.up.railway.app/api/auth/login';
   credentials = { username: '', password: '' };
   errorMsg  = '';
   isLoading = false;

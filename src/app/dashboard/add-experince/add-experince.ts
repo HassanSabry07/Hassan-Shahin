@@ -17,7 +17,7 @@ export class AddExperince implements OnInit {
   selectedFile: File | null = null;
   editingId: string | null = null;
   successMessage: string = '';
-  imageBaseUrl = 'http://localhost:3000/uploads/';
+  imageBaseUrl = 'hhttps://portfolio-nodejs-production.up.railway.app/uploads/';
 
   constructor(
     private fb: FormBuilder,
