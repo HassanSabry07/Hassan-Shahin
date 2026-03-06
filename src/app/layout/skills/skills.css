@@ -96,6 +96,7 @@
 }
 
 .skill-name {
+  text-align: center;
   color: #fff !important;
   font-weight: 800;
   font-size: 1.2rem;
